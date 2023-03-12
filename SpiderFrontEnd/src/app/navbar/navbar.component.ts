@@ -2,8 +2,6 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
-import { ChatServicesService } from '../chat-page/chat-services.service';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
@@ -14,16 +12,14 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('toggleButton') toggleButton!: ElementRef;
   @ViewChild('menu') menu!: ElementRef;
-  @ViewChild('togglenoti') togglenoti!: ElementRef;
-  @ViewChild('notiMenu') notiMenu!: ElementRef;
   public show:boolean=false;
-  public notiShow:boolean=false;
-  public notificationArray:any=[];
-  private incomingMsgSubscription: Subscription | undefined;
-  private incomingNotiSubscription: Subscription | undefined;
+  public usr:any;
+  public userparsed:any;
+  public profileurl:any;
+  public userName:any;
   isMenuOpened: boolean = false;
 
-  constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private router: Router) {
+    constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private router: Router) {
     this.renderer.listen('window', 'click',(e:Event)=>{
       /**
        * Only run when toggleButton is not clicked
@@ -37,20 +33,10 @@ export class NavbarComponent implements OnInit {
          this.show=false;
       }
     }
-    if(this.togglenoti?.nativeElement!=null && this.notiMenu?.nativeElement!=null){
-      if(e.target !== this.togglenoti.nativeElement && e.target!==this.notiMenu.nativeElement){
-          this.isMenuOpened=false;
-       }
-     }
     });
   }
 
-  public usr:any;
-  public userparsed:any;
-  public profileurl:any;
-  public userName:any;
-  public noti:boolean=false;
-  public recData:any;
+
   ngOnInit(): void {
     // this.show=false;
     //
@@ -68,43 +54,19 @@ export class NavbarComponent implements OnInit {
             //console.log(res.data);
           }).catch(err=>console.log(err))
         }).catch(err =>console.log(err))
-        this.getPendingReq();
       }
     })
-    setInterval(() => {
-      //console.log(this.router.url);
-      if(this.router.url=="/chat"){
-        this.noti=false;
-      }
-    }, 5000);
   }
 
   toggleMenu() {
     this.show=!this.show;
   }
-  toggleNotiDropDown() {
-    if(this.notificationArray?.length!=0){
-    this.notiShow=!this.notiShow;
-    }
-  }
 
-  onchatClicked(){
-    this.noti=false;
-    this.router.navigate(['chat']);
-  }
+
   onProfilePicError() {
     this.profileurl = this.userparsed.photoURL;
   }
-  getPendingReq() {
-    axios.get('getPendingRequest').then(res => {
-      //console.log(res.data)
-      res.data.forEach((element: any) => {
-        this.notificationArray.push({sender:element.id,notiType:"frnd req",profileurl:element.profilePicture,userName:element.name})
-      });
-      //console.log(res.data)
-      console.log(this.notificationArray)
-    }).catch(err => console.log(err))
-  }
+
   togglenav(): void {
     this.isMenuOpened = !this.isMenuOpened;
   }

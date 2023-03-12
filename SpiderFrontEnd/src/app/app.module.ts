@@ -24,7 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { TagInputModule } from 'ngx-chips';
-import { UtiliyTagComponent } from './primary-home-page/utiliyTag/utiliyTag.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
@@ -35,7 +34,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
       LoginComponent,
       ChatPageComponent,
       NavbarComponent,
-      UtiliyTagComponent,
    ],
   imports: [
     BrowserModule,
