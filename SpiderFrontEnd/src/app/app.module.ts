@@ -19,7 +19,6 @@ import { ProfilePostComponent } from './profile-post/profile-post.component';
 import { FriendsComponent } from './friends/friends.component';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { AppSearchComponent } from './navbar/app-search/app-search.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip'
 import { TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -48,7 +47,6 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
       ShowgamesComponent,
       ProfilePostComponent,
       FriendsComponent,
-      AppSearchComponent,
       FrindsprofileComponent,
       ShowfriendgamesComponent,
       ShowfriendpostsComponent,
