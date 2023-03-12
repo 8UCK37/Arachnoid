@@ -2,11 +2,9 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ChatServicesService } from '../chat-page/chat-services.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { ChatPageComponent } from '../chat-page/chat-page.component';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -25,7 +23,7 @@ export class NavbarComponent implements OnInit {
   private incomingNotiSubscription: Subscription | undefined;
   isMenuOpened: boolean = false;
 
-  constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private socketService : ChatServicesService,private router: Router) {
+  constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private router: Router) {
     this.renderer.listen('window', 'click',(e:Event)=>{
       /**
        * Only run when toggleButton is not clicked
@@ -62,8 +60,6 @@ export class NavbarComponent implements OnInit {
         this.usr = localStorage.getItem('user');
         this.userparsed=JSON.parse(this.usr);
         //console.log(this.userparsed)
-        this.socketService.setupSocketConnection();
-        this.socketService.setSocketId(this.userparsed.uid);
         axios.get('saveuser').then(res=>{
           //console.log("save user" ,res)
           axios.post('getUserInfo',{frnd_id:this.userparsed.uid}).then(res=>{
@@ -72,8 +68,6 @@ export class NavbarComponent implements OnInit {
             //console.log(res.data);
           }).catch(err=>console.log(err))
         }).catch(err =>console.log(err))
-        this.incMsg();
-        this.incNotification();
         this.getPendingReq();
       }
     })
@@ -93,31 +87,7 @@ export class NavbarComponent implements OnInit {
     this.notiShow=!this.notiShow;
     }
   }
-  incMsg(){
-    this.incomingMsgSubscription = this.socketService.getIncomingMsg().subscribe((data) => {
-      this.recData = typeof data === 'string' ? JSON.parse(data) : data;
-      //console.log(this.recData);
-      ChatPageComponent.incSenderIds.push(this.recData.sender)
-      this.noti=true;
-    });
-  }
-  incNotification(){
-    this.incomingNotiSubscription = this.socketService.getIncomingNoti().subscribe((data) => {
-      this.recData = typeof data === 'string' ? JSON.parse(data) : data;
-      //console.log(this.recData);
-      if(this.recData.notification!='disc' && this.recData.notification!='online'){
-      this.notificationArray.push({sender:this.recData.sender,notiType:this.recData.notification})
-      this.notificationArray.forEach((noti: any) => {
-        axios.post('getUserInfo',{frnd_id:noti.sender}).then(res=>{
-          noti.profileurl=res.data.profilePicture;
-          noti.userName=res.data.name;
-          //console.log("res.data");
-       }).catch(err=>console.log(err))
-      });
-      }
-      //console.log(this.notificationArray)
-    });
-  }
+
   onchatClicked(){
     this.noti=false;
     this.router.navigate(['chat']);
