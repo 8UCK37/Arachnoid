@@ -139,6 +139,24 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use('/static',express.static(__dirname + '/../../public'));
 
+const {spawn}= require('child_process')
+
+//const childPython = spawn('python',['--version']);
+const childPython = spawn('python',['test.py']);
+childPython.stdout.on('data',(data)=>{
+  console.log(`stdout:${data}`)
+})
+
+childPython.stderr.on('data',(data)=>{
+  console.log(`stderr:${data}`)
+});
+//script
+childPython.on('close',(code)=>{
+  console.log(`childPython exited with code:${code}`)
+}) 
+
+
+
 app.get('/saveuser', ensureAuthenticated , async function (req, res) {
  
   //console.log(req.user)
