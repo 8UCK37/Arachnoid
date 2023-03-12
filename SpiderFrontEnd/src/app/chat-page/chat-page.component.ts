@@ -88,7 +88,7 @@ export class ChatPageComponent implements OnInit {
         });
       });
     }, 300);
-    this.getActiveConvo();
+
     this.incNotification();
   }
 
@@ -105,12 +105,7 @@ export class ChatPageComponent implements OnInit {
     this.allMsgs.push({sender:this.to,rec:false,msg:this.values,time:this.getLocalTime()})
     //console.log(this.getLocalTime())
     this.scrollToBottom();
-    if(this.selectedFrndId!=this.to)
-    {
-    setTimeout(() => {
-      this.getActiveConvo();
-    }, 400);
-    }
+    
   }
 
   getfriendlist(){
@@ -200,7 +195,6 @@ export class ChatPageComponent implements OnInit {
         //this.getActiveConvo();
         }else{
           this.notification.set(recData.sender,true);
-          this.getActiveConvo();
         }
       });
     }
@@ -224,38 +218,6 @@ export class ChatPageComponent implements OnInit {
     };
 
 
-    getActiveConvo(){
-      this.activeConvList=[];
-      const uniqueConv:any=[];
-
-      axios.get('getActiveList').then(res=>{
-       //console.log(res.data)
-       res.data.forEach((element: any)=> {
-        //console.log(element.sender)
-        if(!uniqueConv.includes(element.sender)){
-          uniqueConv.push(element.sender)
-        }
-       });
-
-      axios.get('sentOnly').then(res=>{
-          res.data.forEach((element: any) => {
-            if(!uniqueConv.includes(element.receiver)){
-              uniqueConv.push(element.receiver)
-            }
-
-          });
-        //console.log(uniqueConv.length)
-          uniqueConv.forEach((sender: any) => {
-            //console.log(sender)
-            axios.post('getUserInfo',{frnd_id:sender}).then(res=>{
-              this.activeConvList.push(res.data)
-            }).catch(err =>console.log(err))
-              });
-            }).catch(err=>console.log(err))
-
-      }).catch(err=>console.log(err))
-      //console.log(this.activeConvList)
-    }
     toggleEmojiPicker() {
       console.log(this.showEmojiPicker);
           this.showEmojiPicker = !this.showEmojiPicker;
