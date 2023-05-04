@@ -26,7 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 @NgModule({
   declarations: [
       AppComponent,
@@ -51,6 +53,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     TagInputModule,
     ReactiveFormsModule,
     PickerModule,
+    ButtonModule,
+    DialogModule,
+    ProgressSpinnerModule,
     CarouselModule.forRoot()
   ],
   providers: [
