@@ -13,7 +13,7 @@
 
 nav {
   width: 100%;
-  padding: 10px 10%;
+  padding: 5px 2%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +21,8 @@ nav {
   z-index: 15;
   background-color: #262626;
 }
-app-app-search{
+
+app-app-search {
   width: 629px;
   height: 37px;
   margin-left: 75px;
@@ -29,8 +30,13 @@ app-app-search{
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
+}
+
+.gps {
+  width: 30px;
+  height: 30px;
 }
 
 .user-pic {
@@ -42,10 +48,10 @@ app-app-search{
   margin-left: 30px;
 }
 
-.nav-btn:hover{
+.nav-btn:hover {
   border-radius: 3px;
   background: rgb(43, 57, 137);
-  padding-right:10px;
+  padding-right: 10px;
   padding-left: 10px;
 }
 
@@ -155,7 +161,7 @@ input:focus {
   margin-right: 110px;
 }
 
-::placeholder{
+::placeholder {
   color: #e5e5e5;
 }
 
@@ -177,93 +183,92 @@ input:focus {
   opacity: 0.9;
 
 }
+
 /*noti bell for chat don't remove*/
-.wrapper{
-  height:0px;
-  justify-content:center;
-  align-items:center;
+.wrapper {
+  height: 0px;
+  justify-content: center;
+  align-items: center;
   position: relative;
   cursor: pointer;
-  background-color:#00000000;
+  background-color: #00000000;
 }
 
-.icon{
-  animation:notification 2s infinite;
-  font-size:20px;
-  color:#d63031;
+.icon {
+  animation: notification 2s infinite;
+  font-size: 20px;
+  color: #d63031;
   position: absolute;
-  top:0;
-  right:20px;
-  top:-40px
+  top: 0;
+  right: 20px;
+  top: -40px
 }
 
-@keyframes notification{
+@keyframes notification {
 
-  5%{
-      transform:rotate(10deg);
+  5% {
+    transform: rotate(10deg);
   }
 
-  10%{
-      transform:rotate(-10deg);
+  10% {
+    transform: rotate(-10deg);
   }
 
-  15%{
-      transform:rotate(10deg);
+  15% {
+    transform: rotate(10deg);
   }
 
-  20%{
-      transform:rotate(0deg);
+  20% {
+    transform: rotate(0deg);
   }
 
 
 }
-.nav-btn{
-  cursor:pointer;
-  color:antiquewhite;
-  padding-right:10px;
+
+.nav-btn {
+  cursor: pointer;
+  color: antiquewhite;
+  padding-right: 10px;
   padding-left: 10px;
 }
 
 /*new notification menu*/
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-a:visited{
+a:visited {
   color: black;
 }
 
-.box::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+.box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
   border-radius: 5px
 }
 
-.box::-webkit-scrollbar
-{
-	width: 10px;
-	background-color: #F5F5F5;
+.box::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
   border-radius: 5px
 }
 
-.box::-webkit-scrollbar-thumb
-{
-	background-color: black;
-	border: 2px solid black;
+.box::-webkit-scrollbar-thumb {
+  background-color: black;
+  border: 2px solid black;
   border-radius: 5px
 }
 
-.notification{
+.notification {
   padding-top: 10px;
   position: relative;
   display: inline-block;
 }
 
-.number{
+.number {
   height: 30px;
-  width:  30px;
+  width: 30px;
   background-color: #d63031;
   border-radius: 20px;
   color: white;
@@ -277,15 +282,15 @@ a:visited{
 }
 
 .number:empty {
-   display: none;
+  display: none;
 }
 
-.notBtn{
+.notBtn {
   transition: 0.5s;
   cursor: pointer
 }
 
-.fas{
+.fas {
   font-size: 25pt;
   padding-bottom: 10px;
   color: black;
@@ -293,7 +298,7 @@ a:visited{
   margin-left: 40px;
 }
 
-.box{
+.box {
   width: 400px;
   height: 0px;
   border-radius: 10px;
@@ -304,9 +309,9 @@ a:visited{
   left: 120x;
   top: 370px;
   background-color: #262626;
-  -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.2);
-  -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
-  box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 10px 10px 23px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 10px 10px 23px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 10px 10px 23px 0px rgba(0, 0, 0, 0.1);
   cursor: context-menu;
 }
 
@@ -314,31 +319,31 @@ a:visited{
   color: #d63031;
 }
 
-.box{
+.box {
   height: 60vh
-} 
+}
 
-.content{
+.content {
   padding: 20px;
   color: black;
   vertical-align: middle;
   text-align: left;
 }
 
-.gry{
+.gry {
   background-color: #F4F4F4;
 }
 
-.top{
+.top {
   color: black;
   padding: 10px
 }
 
-.display{
+.display {
   position: relative;
 }
 
-.cont{
+.cont {
   position: absolute;
   top: 0;
   width: 100%;
@@ -346,11 +351,11 @@ a:visited{
   background-color: #F4F4F4;
 }
 
-.cont:empty{
+.cont:empty {
   display: none;
 }
 
-.stick{
+.stick {
   text-align: center;
   display: block;
   font-size: 50pt;
@@ -358,52 +363,49 @@ a:visited{
   padding-left: 80px
 }
 
-.stick:hover{
+.stick:hover {
   color: black;
 }
 
-.cent{
+.cent {
   text-align: center;
   display: block;
 }
 
-.sec{
+.sec {
   padding: 25px 10px;
   background-color: #262626;
   transition: 0.5s;
 }
 
-.profCont{
+.profCont {
   padding-left: 15px;
 }
 
-.profile{
+.profile {
   -webkit-clip-path: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
   width: 75px;
   float: left;
 }
 
-.txt{
+.txt {
   vertical-align: top;
   font-size: 1.25rem;
   padding: 5px 10px 0px 115px;
 }
 
-.sub{
+.sub {
   font-size: 1rem;
   color: grey;
 }
 
 
-.sec:hover{
+.sec:hover {
   background-color: #BFBFBF;
 }
 
 
-.cont img{
+.cont img {
   border-radius: 50%;
-}
-.cont button{
-  margin-left: 10px;
 }

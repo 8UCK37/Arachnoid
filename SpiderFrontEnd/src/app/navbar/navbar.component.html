@@ -1,37 +1,67 @@
 <main>
   <div *ngIf="userparsed">
-  <nav class="nav-bg">
-    <img src="./../../assets/icon-resource/buyer.png" class="logo">
+    <nav class="nav-bg">
+      <p style="color: aliceblue; font-family:cursive; font-size: 40px;">Bakingo</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><img
+          src="https://cdn-icons-png.flaticon.com/512/143/143960.png" class="gps">
 
-        <li style="margin-left: 35rem;"><a class="nav-btn" style="color: antiquewhite;" [routerLink]="['/home']">Home</a></li>
-<div>
-    <img [src]="profileurl" #toggleButton class="user-pic" (click)="toggleMenu()" (error)="onProfilePicError()" referrerpolicy="no-referrer" >
-</div>
-   <div class="sub-menu-wrap" id="subMenu" #menu [ngClass]="show?'open-menu':''">
-    <div class="sub-menu" id="openmenu" >
-        <div class="user-info" style="cursor: pointer;">
-          <div class="profiledp">
-            <img [src]="profileurl">
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
           </div>
-            <h3>{{userName}}</h3>
         </div>
-        <hr>
-        <a href="#"  class="sub-menu-link">
+      </div>
+
+
+
+      <li style=" margin-left: 55rem;"><a class="nav-btn" style="color: antiquewhite;" [routerLink]="['/home']">Home</a>
+      </li>
+      <div>
+        <img [src]="profileurl" #toggleButton class="user-pic" (click)="toggleMenu()" (error)="onProfilePicError()"
+          referrerpolicy="no-referrer">
+      </div>
+      <div class="sub-menu-wrap" id="subMenu" #menu [ngClass]="show?'open-menu':''">
+        <div class="sub-menu" id="openmenu">
+          <div class="user-info" style="cursor: pointer;">
+            <div class="profiledp">
+              <img [src]="profileurl">
+            </div>
+            <h3>{{userName}}</h3>
+          </div>
+          <hr>
+          <a href="#" class="sub-menu-link">
             <img src="./../../assets/icon-resource/setting.png">
             <p>Settings & Privacy</p>
-        </a>
-        <a href="#" class="sub-menu-link">
+          </a>
+          <a href="#" class="sub-menu-link">
             <img src="./../../assets/icon-resource/help.png">
             <p>Help & Support</p>
-        </a>
-        <a (click)="user.logout()" href="#" class="sub-menu-link">
+          </a>
+          <a (click)="user.logout()" href="#" class="sub-menu-link">
             <img src="./../../assets/icon-resource/logout.png">
             <p>Logout</p>
-        </a>
-    </div>
-   </div>
-</nav>
-</div>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
 </main>
 
 
