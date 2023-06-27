@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
+import { UtilService } from '../locationmodal/util.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { UserService } from '../login/user.service';
 export class PrimaryHomePageComponent implements OnInit {
   public show:boolean=true;
   public profileurl:any;
-  constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2 ) { }
+  constructor(public user: UserService ,private auth: AngularFireAuth,private renderer: Renderer2,private utilService:UtilService ) { }
   public usr:any;
   public userparsed:any;
   public userName:any;
@@ -34,6 +35,14 @@ export class PrimaryHomePageComponent implements OnInit {
 
       }
     })
+
+    this.utilService.modalObj$.subscribe((modalData:any)=>{
+      if(modalData.open){
+        console.log("true")
+      }else{
+        console.log("false")
+      }
+    })
    }
 
   toggleMenu() {
@@ -43,7 +52,10 @@ export class PrimaryHomePageComponent implements OnInit {
   onProfilePicError() {
     this.profileurl = this.userparsed?.photoURL;
   }
-
+  openModal(){
+    console.log("here")
+    this.utilService.setModalObj({open:true})
+  }
 }
 
 

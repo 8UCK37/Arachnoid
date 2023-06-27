@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import axios from 'axios';
 import { UserService } from '../login/user.service';
 import { Router } from '@angular/router';
+import { UtilService } from '../locationmodal/util.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
   public userName:any;
   isMenuOpened: boolean = false;
 
-    constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private router: Router) {
+    constructor(public user: UserService ,private renderer: Renderer2 ,private auth: AngularFireAuth,private router: Router,private utilService : UtilService) {
     this.renderer.listen('window', 'click',(e:Event)=>{
       /**
        * Only run when toggleButton is not clicked
@@ -62,7 +63,10 @@ export class NavbarComponent implements OnInit {
     this.show=!this.show;
   }
 
-
+  openModal(){
+    console.log("nav")
+    this.utilService.setModalObj({open:true})
+  }
   onProfilePicError() {
     this.profileurl = this.userparsed.photoURL;
   }

@@ -29,6 +29,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { LocationmodalComponent } from './locationmodal/locationmodal.component';
 @NgModule({
   declarations: [
       AppComponent,
@@ -36,6 +37,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
       LoginComponent,
       ChatPageComponent,
       NavbarComponent,
+      LocationmodalComponent,
    ],
   imports: [
     BrowserModule,

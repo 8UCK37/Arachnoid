@@ -3,7 +3,7 @@
     <nav class="nav-bg">
       <p style="color: aliceblue; font-family:cursive; font-size: 40px;">Bakingo</p>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><img
-          src="https://cdn-icons-png.flaticon.com/512/143/143960.png" class="gps">
+          src="https://cdn-icons-png.flaticon.com/512/143/143960.png" class="gps" (click)="openModal()">
 
       </button>
 
@@ -29,10 +29,9 @@
         </div>
       </div>
 
-
-
       <li style=" margin-left: 55rem;"><a class="nav-btn" style="color: antiquewhite;" [routerLink]="['/home']">Home</a>
       </li>
+
       <div>
         <img [src]="profileurl" #toggleButton class="user-pic" (click)="toggleMenu()" (error)="onProfilePicError()"
           referrerpolicy="no-referrer">
